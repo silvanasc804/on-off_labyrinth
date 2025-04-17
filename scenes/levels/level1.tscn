@@ -1,5 +1,18 @@
-[gd_scene format=3 uid="uid://d03hn4ttutisi"]
+[gd_scene load_steps=4 format=3 uid="uid://d03hn4ttutisi"]
+
+[ext_resource type="PackedScene" uid="uid://cgawmsaxesbgn" path="res://scenes/interactive/mountain.tscn" id="1_4tcl0"]
+[ext_resource type="PackedScene" uid="uid://bjr6o6qw4xfjy" path="res://scenes/player/player.tscn" id="2_dd0lh"]
+[ext_resource type="PackedScene" uid="uid://b06pcja47s3yq" path="res://scenes/interactive/vela.tscn" id="3_dd0lh"]
 
 [node name="Level1" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Node2D" parent="." instance=ExtResource("1_4tcl0")]
+position = Vector2(258, 244)
+
+[node name="player" parent="." instance=ExtResource("2_dd0lh")]
+position = Vector2(309, 445)
+
+[node name="Area2D" parent="." instance=ExtResource("3_dd0lh")]
+position = Vector2(1024, 424)

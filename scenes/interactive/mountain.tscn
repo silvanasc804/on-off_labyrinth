@@ -1,3 +1,32 @@
-[gd_scene format=3 uid="uid://cgawmsaxesbgn"]
+[gd_scene load_steps=4 format=3 uid="uid://cgawmsaxesbgn"]
 
-[node name="Mountain" type="Node2D"]
+[ext_resource type="Script" uid="uid://6v0a3air6ay6" path="res://scenes/interactive/mountain.gd" id="1_k3x57"]
+[ext_resource type="Texture2D" uid="uid://cejgkvhh4sq54" path="res://art/interactive/mountain_frozen.png" id="2_81kgg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_57dch"]
+size = Vector2(466, 428)
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_k3x57")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_81kgg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(125, 133)
+polygon = PackedVector2Array(-210.855, -53.2841, -146.855, -20.2841, -38.8546, 17.7159, 21.1454, 7.71594, 34.1454, -9.28406, 32.1454, -36.2841, -42.8546, -120.284, -75.8546, -164.284, -96.8546, -166.284, -137.855, -167.284, -159.855, -151.284, -171.855, -128.284, -194.855, -121.284)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(54, 30)
+shape = SubResource("RectangleShape2D_57dch")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-82, 15, -96, 89, 84, 162, 153, 153, 172, 130, 168, 93, 54, -43, -18, -50, -40, -30, -54, -7)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
