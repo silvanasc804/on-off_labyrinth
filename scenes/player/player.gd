@@ -1,5 +1,5 @@
 class_name Player
-extends Node2D
+extends CharacterBody2D
 
 @export var speed = 400
 
