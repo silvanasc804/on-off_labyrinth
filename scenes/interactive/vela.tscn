@@ -7,7 +7,7 @@
 radius = 63.0
 height = 262.0
 
-[node name="Area2D" type="Area2D"]
+[node name="vela" type="Area2D"]
 script = ExtResource("1_vpcwk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

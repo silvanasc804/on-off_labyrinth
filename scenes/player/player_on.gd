@@ -1,4 +1,4 @@
-class_name PlayerOff
+class_name PlayerOn
 extends CharacterBody2D
 
 @export var speed = 400
@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var animated_sprite = $AnimatedSprite2D
 
 func _physics_process(delta: float) -> void:
+
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = speed * input_direction
 	if input_direction:

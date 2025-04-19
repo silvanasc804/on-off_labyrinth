@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ylipdnq5w5fs"]
+
+[ext_resource type="Script" uid="uid://bx3fuewtitlx7" path="res://scenes/interactive/tornado.gd" id="1_b670u"]
+[ext_resource type="Texture2D" uid="uid://dvvja7q3gulmw" path="res://art/interactive/tornado.png" id="1_ehjlj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b670u"]
+radius = 104.0
+height = 250.0
+
+[node name="tornado" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_b670u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ehjlj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_b670u")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

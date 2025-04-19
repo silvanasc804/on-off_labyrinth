@@ -1,6 +1,8 @@
 class_name Vela
 extends Area2D
 
+signal player_use
+
 var vela_status = 1.0
 var vela_active = true
 
@@ -12,5 +14,6 @@ func _process(delta: float) -> void:
 		pass
 
 func _on_body_entered(body: Node2D) -> void:
-	if(body.name == "player"):
-		vela_active = false
+	vela_active = false
+	$CollisionShape2D.call_deferred("set_disabled", true)
+	player_use.emit()

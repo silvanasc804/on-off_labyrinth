@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://cd1amykd5s0wh"]
+
+[ext_resource type="PackedScene" uid="uid://jxi0e4ke5w2n" path="res://scenes/player/player_on.tscn" id="1_71baw"]
+[ext_resource type="PackedScene" uid="uid://b06pcja47s3yq" path="res://scenes/interactive/vela.tscn" id="2_niitk"]
+[ext_resource type="PackedScene" uid="uid://ylipdnq5w5fs" path="res://scenes/interactive/tornado.tscn" id="3_d5djh"]
+[ext_resource type="PackedScene" uid="uid://em5vgs8c5ccr" path="res://scenes/gamecontroller/game_controller.tscn" id="4_niitk"]
+
+[node name="Level2" type="Node2D"]
+
+[node name="tornado" parent="." instance=ExtResource("3_d5djh")]
+position = Vector2(525, 520)
+x_variation = 500
+
+[node name="player" parent="." instance=ExtResource("1_71baw")]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="vela" parent="Node2D" instance=ExtResource("2_niitk")]
+position = Vector2(56, 526)
+
+[node name="vela2" parent="Node2D" instance=ExtResource("2_niitk")]
+position = Vector2(187, 530)
+
+[node name="vela3" parent="Node2D" instance=ExtResource("2_niitk")]
+position = Vector2(320, 530)
+
+[node name="vela4" parent="Node2D" instance=ExtResource("2_niitk")]
+position = Vector2(455, 528)
+
+[node name="vela5" parent="Node2D" instance=ExtResource("2_niitk")]
+position = Vector2(595, 523)
+
+[node name="GameController" parent="." instance=ExtResource("4_niitk")]
+position = Vector2(525, 520)
+
+[connection signal="player_enter" from="tornado" to="GameController" method="_on_tornado_player_enter"]
+[connection signal="player_use" from="Node2D/vela" to="GameController" method="_on_vela_player_use"]
+[connection signal="player_use" from="Node2D/vela2" to="GameController" method="_on_vela_2_player_use"]
+[connection signal="player_use" from="Node2D/vela3" to="GameController" method="_on_vela_3_player_use"]
+[connection signal="player_use" from="Node2D/vela4" to="GameController" method="_on_vela_4_player_use"]
+[connection signal="player_use" from="Node2D/vela5" to="GameController" method="_on_vela_5_player_use"]

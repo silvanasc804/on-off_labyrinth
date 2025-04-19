@@ -1,18 +1,47 @@
-[gd_scene load_steps=4 format=3 uid="uid://d03hn4ttutisi"]
+[gd_scene load_steps=8 format=3 uid="uid://d03hn4ttutisi"]
 
 [ext_resource type="PackedScene" uid="uid://cgawmsaxesbgn" path="res://scenes/interactive/mountain.tscn" id="1_4tcl0"]
 [ext_resource type="PackedScene" uid="uid://bjr6o6qw4xfjy" path="res://scenes/player/player.tscn" id="2_dd0lh"]
 [ext_resource type="PackedScene" uid="uid://b06pcja47s3yq" path="res://scenes/interactive/vela.tscn" id="3_dd0lh"]
+[ext_resource type="PackedScene" uid="uid://bgivxtt3pa8o4" path="res://scenes/interactive/level_change.tscn" id="5_1seuy"]
+[ext_resource type="PackedScene" uid="uid://ylipdnq5w5fs" path="res://scenes/interactive/tornado.tscn" id="5_dywbp"]
+[ext_resource type="PackedScene" uid="uid://em5vgs8c5ccr" path="res://scenes/gamecontroller/game_controller.tscn" id="6_1seuy"]
+
+[sub_resource type="GDScript" id="GDScript_dywbp"]
+script/source = "extends Node2D
+"
 
 [node name="Level1" type="Node2D"]
+script = SubResource("GDScript_dywbp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="Node2D" parent="." instance=ExtResource("1_4tcl0")]
-position = Vector2(258, 244)
+position = Vector2(330, 149)
 
 [node name="player" parent="." instance=ExtResource("2_dd0lh")]
 position = Vector2(309, 445)
 
-[node name="Area2D" parent="." instance=ExtResource("3_dd0lh")]
-position = Vector2(1024, 424)
+[node name="tornado" parent="." instance=ExtResource("5_dywbp")]
+position = Vector2(759, 481)
+x_variation = 500
+y_variation = 500
+
+[node name="Final" parent="." instance=ExtResource("5_1seuy")]
+position = Vector2(1077, 84)
+
+[node name="Node2D2" type="Node2D" parent="."]
+
+[node name="vela" parent="Node2D2" instance=ExtResource("3_dd0lh")]
+position = Vector2(763, 149)
+
+[node name="vela2" parent="Node2D2" instance=ExtResource("3_dd0lh")]
+position = Vector2(1036, 449)
+
+[node name="GameController" parent="." instance=ExtResource("6_1seuy")]
+
+[connection signal="body_entered" from="tornado" to="." method="_on_tornado_body_entered"]
+[connection signal="player_enter" from="tornado" to="GameController" method="_on_tornado_player_enter"]
+[connection signal="child_entered_tree" from="Node2D2" to="." method="_on_node_2d_2_child_entered_tree"]
+[connection signal="player_use" from="Node2D2/vela" to="GameController" method="_on_vela_player_use"]
+[connection signal="player_use" from="Node2D2/vela2" to="GameController" method="_on_vela_2_player_use"]
