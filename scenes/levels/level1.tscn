@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b06pcja47s3yq" path="res://scenes/interactive/vela.tscn" id="3_dd0lh"]
 
 [node name="Level1" type="Node2D"]
+position = Vector2(0, 2)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
