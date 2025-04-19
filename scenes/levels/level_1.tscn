@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=4 uid="uid://bfj661mvprtap"]
+
+[ext_resource type="Texture2D" uid="uid://vvpdypqo4a7v" path="res://art/ground/path1.png" id="1_6iamk"]
+[ext_resource type="Texture2D" uid="uid://cyfkcxo1rgtf8" path="res://art/background/bg1.png" id="1_sk5k4"]
+[ext_resource type="Texture2D" uid="uid://dqhn67biprcsq" path="res://art/ground/path2.png" id="2_nsrm0"]
+[ext_resource type="PackedScene" uid="uid://cgawmsaxesbgn" path="res://scenes/interactive/mountain.tscn" id="3_nsrm0"]
+[ext_resource type="PackedScene" uid="uid://bjr6o6qw4xfjy" path="res://scenes/player/player.tscn" id="4_x42e6"]
+[ext_resource type="PackedScene" uid="uid://b06pcja47s3yq" path="res://scenes/interactive/vela.tscn" id="5_6761a"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6iamk"]
+texture = ExtResource("1_6iamk")
+texture_region_size = Vector2i(50, 50)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+2:2/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nsrm0"]
+texture = ExtResource("2_nsrm0")
+texture_region_size = Vector2i(50, 50)
+1:1/0 = 0
+2:1/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_sk5k4"]
+sources/1 = SubResource("TileSetAtlasSource_6iamk")
+sources/3 = SubResource("TileSetAtlasSource_nsrm0")
+
+[node name="Level_1" type="Node2D"]
+
+[node name="Bg1" type="Sprite2D" parent="."]
+position = Vector2(575, 325)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_sk5k4")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAABACEAAQABAAIAAAAEACEAAQABAAIAAAAHACEAAQABAAIAAAAKACEAAQABAAIAAAANACEAAQABAAIAAAABAB4AAQABAAAAAAAEAB4AAQABAAAAAAAHAB4AAQABAAAAAAAKAB4AAQABAAAAAAANAB4AAwACAAIAAAANABsAAQAAAAEAAAANABgAAQAAAAEAAAANABUAAQAAAAEAAAANABIAAQAAAAEAAAANAA8AAQAAAAAAAAAQAA8AAQABAAAAAAATAA8AAQABAAAAAAAiAAwAAQABAAAAAAAcAA8AAQABAAEAAAAfAA8AAQABAAEAAAAiAA8AAQABAAEAAAAlAA8AAQABAAEAAAAQAB4AAwABAAIAAAATAB4AAQABAAAAAAAQACEAAQABAAIAAAATACEAAQABAAIAAAAWACEAAQABAAIAAAAWAB4AAQABAAAAAAAQABsAAQACAAEAAAAQABgAAQACAAEAAAAQABUAAQACAAEAAAATABIAAQABAAIAAAAWABIAAQABAAIAAAAZABIAAwACAAEAAAAZABUAAQAAAAIAAAAQABIAAwABAAEAAAAcABUAAQABAAIAAAAfABUAAQABAAIAAAAiABUAAQABAAIAAAAlABUAAQABAAIAAAAoABUAAQABAAIAAAArABUAAQABAAIAAAAuABUAAQABAAIAAAAxABUAAQABAAIAAAA0ABUAAQABAAIAAAA3ABUAAwACAAEAAAA3ABgAAQAAAAEAAAA3ABsAAQAAAAEAAAA3AB4AAQAAAAIAAAA6AB4AAQABAAIAAAA9AB4AAQABAAIAAABAAB4AAQABAAIAAABDAB4AAQABAAIAAABGAB4AAQABAAIAAABGABsAAQABAAAAAABDABsAAQABAAAAAABAABsAAQABAAAAAAA9ABsAAQABAAAAAAA6ABgAAQACAAEAAAA6ABUAAQACAAEAAAA6ABIAAQACAAAAAAA3ABIAAwABAAIAAAA3AA8AAQACAAEAAAA3AAwAAQACAAAAAAArAAwAAQABAAAAAAAuAAwAAQABAAAAAAAxAAwAAQABAAAAAAA0AAwAAQABAAAAAAAoAA8AAQABAAEAAAArAA8AAQABAAEAAAAuAA8AAQABAAEAAAAxAA8AAQABAAEAAAA0AA8AAQABAAEAAAAcABIAAQABAAEAAAAfABIAAQABAAEAAAAiABIAAQABAAEAAAAlABIAAQABAAEAAAAoABIAAQABAAEAAAArABIAAQABAAEAAAAuABIAAQABAAEAAAAxABIAAQABAAEAAAA0ABIAAQABAAEAAAA6ABsAAwABAAIAAAAWAA8AAwACAAIAAAAWAAwAAQAAAAAAAAAZAA8AAQABAAEAAAAZAAwAAQABAAAAAAAcAAwAAQABAAAAAAAfAAwAAQABAAAAAAAlAAwAAwACAAIAAAAoAAwAAwABAAIAAAAlAAkAAQAAAAEAAAAoAAkAAQACAAEAAAAlAAYAAQAAAAAAAAAoAAYAAQACAAAAAAAZAB4AAQABAAAAAAAcAB4AAQACAAAAAAAcACEAAQACAAIAAAAZACEAAQABAAIAAAA=")
+tile_set = SubResource("TileSet_sk5k4")
+
+[node name="Area2D" parent="." instance=ExtResource("3_nsrm0")]
+position = Vector2(779, 159)
+scale = Vector2(0.697764, 0.7)
+
+[node name="Area2D2" parent="." instance=ExtResource("3_nsrm0")]
+position = Vector2(415, 136)
+scale = Vector2(0.7, 0.7)
+
+[node name="Area2D3" parent="." instance=ExtResource("3_nsrm0")]
+position = Vector2(168, 259)
+scale = Vector2(0.7, 0.7)
+
+[node name="player" parent="." instance=ExtResource("4_x42e6")]
+position = Vector2(30, 347)
+slide_on_ceiling = false
+
+[node name="Area2D4" parent="." instance=ExtResource("5_6761a")]
+position = Vector2(623, 87)
+scale = Vector2(0.5, 0.5)
