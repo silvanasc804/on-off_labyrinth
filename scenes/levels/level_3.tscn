@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://cpbxoklewm147"]
+[gd_scene load_steps=14 format=4 uid="uid://cpbxoklewm147"]
 
 [ext_resource type="Texture2D" uid="uid://vvpdypqo4a7v" path="res://art/ground/path1.png" id="1_0qepi"]
 [ext_resource type="Texture2D" uid="uid://07im0flsedk1" path="res://art/background/bg3.png" id="1_fmg3e"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://jxi0e4ke5w2n" path="res://scenes/player/player_on.tscn" id="7_fkk1g"]
 [ext_resource type="PackedScene" uid="uid://bgivxtt3pa8o4" path="res://scenes/interactive/level_change.tscn" id="8_ugcn1"]
 [ext_resource type="PackedScene" uid="uid://b1ae2rxtf20ps" path="res://scenes/userinterface/pause.tscn" id="9_pimnq"]
+[ext_resource type="PackedScene" uid="uid://ylipdnq5w5fs" path="res://scenes/interactive/tornado.tscn" id="10_2bnyt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ugcn1"]
 texture = ExtResource("1_0qepi")
@@ -56,16 +57,17 @@ tile_map_data = PackedByteArray("AAABACEAAQABAAAAAAAEACEAAQABAAAAAAABACQAAQABAAI
 tile_set = SubResource("TileSet_2bnyt")
 
 [node name="Area2D" parent="." instance=ExtResource("3_ftfob")]
-position = Vector2(425, 359)
+position = Vector2(453, 372)
 rotation = 3.14159
 scale = Vector2(0.7, -0.7)
 
 [node name="Area2D2" parent="." instance=ExtResource("3_ftfob")]
-position = Vector2(648, 154)
+position = Vector2(620, 170)
 scale = Vector2(0.7, 0.7)
 
 [node name="Area2D3" parent="." instance=ExtResource("4_fkk1g")]
-position = Vector2(507, 459)
+position = Vector2(507, 525)
+scale = Vector2(0.5, 0.5)
 
 [node name="player" parent="." instance=ExtResource("7_fkk1g")]
 position = Vector2(37, 529)
@@ -76,5 +78,21 @@ position = Vector2(37, 529)
 position = Vector2(1173, 561)
 
 [node name="Pause" parent="." instance=ExtResource("9_pimnq")]
+
+[node name="tornado" parent="." instance=ExtResource("10_2bnyt")]
+position = Vector2(141, 317)
+scale = Vector2(0.6, 0.6)
+speed = 150
+y_variation = 210
+
+[node name="tornado2" parent="." instance=ExtResource("10_2bnyt")]
+position = Vector2(680, 363)
+scale = Vector2(0.6, 0.6)
+speed = 200
+x_variation = 55
+
+[node name="vela" parent="." instance=ExtResource("4_fkk1g")]
+position = Vector2(1007, 450)
+scale = Vector2(0.5, 0.5)
 
 [connection signal="body_exited" from="camino" to="GameController" method="_on_camino_body_exited"]

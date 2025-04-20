@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=4 uid="uid://bfj661mvprtap"]
+[gd_scene load_steps=14 format=4 uid="uid://bfj661mvprtap"]
 
 [ext_resource type="Texture2D" uid="uid://vvpdypqo4a7v" path="res://art/ground/path1.png" id="1_6iamk"]
 [ext_resource type="Texture2D" uid="uid://cyfkcxo1rgtf8" path="res://art/background/bg1.png" id="1_sk5k4"]
 [ext_resource type="Texture2D" uid="uid://dqhn67biprcsq" path="res://art/ground/path2.png" id="2_nsrm0"]
 [ext_resource type="PackedScene" uid="uid://cgawmsaxesbgn" path="res://scenes/interactive/mountain.tscn" id="3_nsrm0"]
 [ext_resource type="PackedScene" uid="uid://b06pcja47s3yq" path="res://scenes/interactive/vela.tscn" id="5_6761a"]
+[ext_resource type="PackedScene" uid="uid://ylipdnq5w5fs" path="res://scenes/interactive/tornado.tscn" id="5_qxy0u"]
 [ext_resource type="PackedScene" uid="uid://jxi0e4ke5w2n" path="res://scenes/player/player_on.tscn" id="6_s8va5"]
 [ext_resource type="PackedScene" uid="uid://em5vgs8c5ccr" path="res://scenes/gamecontroller/game_controller.tscn" id="7_oc4kc"]
 [ext_resource type="PackedScene" uid="uid://bgivxtt3pa8o4" path="res://scenes/interactive/level_change.tscn" id="8_s8va5"]
@@ -54,15 +55,15 @@ tile_map_data = PackedByteArray("AAABACEAAQABAAIAAAAEACEAAQABAAIAAAAHACEAAQABAAI
 tile_set = SubResource("TileSet_sk5k4")
 
 [node name="Area2D" parent="." instance=ExtResource("3_nsrm0")]
-position = Vector2(779, 159)
+position = Vector2(785, 159)
 scale = Vector2(0.697764, 0.7)
 
 [node name="Area2D2" parent="." instance=ExtResource("3_nsrm0")]
-position = Vector2(415, 136)
+position = Vector2(469, 143)
 scale = Vector2(0.7, 0.7)
 
 [node name="Area2D3" parent="." instance=ExtResource("3_nsrm0")]
-position = Vector2(168, 259)
+position = Vector2(186, 293)
 scale = Vector2(0.7, 0.7)
 
 [node name="vela" parent="." instance=ExtResource("5_6761a")]
@@ -70,7 +71,7 @@ position = Vector2(623, 87)
 scale = Vector2(0.5, 0.5)
 
 [node name="player" parent="." instance=ExtResource("6_s8va5")]
-position = Vector2(1079, 427)
+position = Vector2(40, 467)
 
 [node name="GameController" parent="." instance=ExtResource("7_oc4kc")]
 
@@ -78,6 +79,10 @@ position = Vector2(1079, 427)
 position = Vector2(1165, 465)
 
 [node name="Pause" parent="." instance=ExtResource("9_dga24")]
+
+[node name="tornado" parent="." instance=ExtResource("5_qxy0u")]
+position = Vector2(417, 465)
+scale = Vector2(0.6, 0.6)
 
 [connection signal="body_exited" from="camino" to="GameController" method="_on_camino_body_exited"]
 [connection signal="player_use" from="vela" to="GameController" method="_on_vela_player_use"]
