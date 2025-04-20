@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpsjm54xe2idq"]
+
+[ext_resource type="AudioStream" uid="uid://b3wrkoaosqrs7" path="res://sound_effects/apagado con viento.mp3" id="1_6eyfa"]
+
+[node name="TurnOff" type="Node"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_6eyfa")
+volume_db = -7.879

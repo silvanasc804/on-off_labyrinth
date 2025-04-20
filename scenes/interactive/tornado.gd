@@ -1,6 +1,7 @@
 extends Area2D
 
 signal player_enter
+const TURN_OFF = preload("res://scenes/sound-effects/turn_off.tscn")
 
 @export var speed = 400
 @export var x_variation = 0
@@ -27,4 +28,9 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
+	var sound_instance = TURN_OFF.instantiate()
+	add_child(sound_instance)
+	var audio_player = sound_instance.get_node("AudioStreamPlayer")
+	audio_player.play()
+	audio_player.finished.connect(sound_instance.queue_free)
 	player_enter.emit()

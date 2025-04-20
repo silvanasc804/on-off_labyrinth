@@ -1,13 +1,14 @@
-[gd_scene load_steps=15 format=4 uid="uid://c68oxsxtcqtc1"]
+[gd_scene load_steps=16 format=4 uid="uid://c68oxsxtcqtc1"]
 
 [ext_resource type="Texture2D" uid="uid://bc4u12nawjf8m" path="res://art/ground/path1_mini.png" id="1_dswqx"]
 [ext_resource type="Texture2D" uid="uid://blf5gk2ujt4xu" path="res://art/background/bg5.png" id="1_laj7o"]
 [ext_resource type="Texture2D" uid="uid://coggt0r6kr8x4" path="res://art/ground/path2_mini.png" id="2_laj7o"]
 [ext_resource type="PackedScene" uid="uid://cgawmsaxesbgn" path="res://scenes/interactive/mountain.tscn" id="3_fi56y"]
 [ext_resource type="PackedScene" uid="uid://jxi0e4ke5w2n" path="res://scenes/player/player_on.tscn" id="5_fi56y"]
-[ext_resource type="Texture2D" uid="uid://dvvja7q3gulmw" path="res://art/interactive/tornado.png" id="5_mxx4w"]
 [ext_resource type="PackedScene" uid="uid://em5vgs8c5ccr" path="res://scenes/gamecontroller/game_controller.tscn" id="6_hldbq"]
 [ext_resource type="PackedScene" uid="uid://b1ae2rxtf20ps" path="res://scenes/userinterface/pause.tscn" id="7_fsnos"]
+[ext_resource type="Script" uid="uid://cgs7u0wuje8vc" path="res://scenes/levels/final.gd" id="8_dwyms"]
+[ext_resource type="Texture2D" uid="uid://b23r2n3oi4pa5" path="res://art/player/dog.png" id="8_tqnj0"]
 [ext_resource type="PackedScene" uid="uid://ylipdnq5w5fs" path="res://scenes/interactive/tornado.tscn" id="9_vvoq0"]
 [ext_resource type="PackedScene" uid="uid://b06pcja47s3yq" path="res://scenes/interactive/vela.tscn" id="10_tqnj0"]
 
@@ -37,6 +38,7 @@ sources/0 = SubResource("TileSetAtlasSource_hldbq")
 sources/1 = SubResource("TileSetAtlasSource_fsnos")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vvoq0"]
+radius = 19.7609
 
 [node name="Level_5" type="Node2D"]
 
@@ -113,18 +115,19 @@ speed = 200
 x_variation = 32
 
 [node name="player" parent="." instance=ExtResource("5_fi56y")]
-position = Vector2(34, 542)
+position = Vector2(40, 537)
 
 [node name="final" type="Area2D" parent="."]
 position = Vector2(646, 295)
 scale = Vector2(1.73155, 1.8)
 collision_layer = 0
 collision_mask = 8
+script = ExtResource("8_dwyms")
 
 [node name="Sprite2D" type="Sprite2D" parent="final"]
-position = Vector2(9.38773e-07, -8.10623e-06)
-scale = Vector2(0.114284, 0.0382955)
-texture = ExtResource("5_mxx4w")
+position = Vector2(9.38773e-07, 1.90735e-06)
+scale = Vector2(0.114284, 0.142604)
+texture = ExtResource("8_tqnj0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="final"]
 shape = SubResource("CircleShape2D_vvoq0")

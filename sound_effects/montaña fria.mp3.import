@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://qwmarbxvhvaf"
+path="res://.godot/imported/montaña fria.mp3-9e419017dc3079fc74816be6357e7c91.mp3str"
+
+[deps]
+
+source_file="res://sound_effects/montaña fria.mp3"
+dest_files=["res://.godot/imported/montaña fria.mp3-9e419017dc3079fc74816be6357e7c91.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -9,6 +9,5 @@
 stream = ExtResource("1_7clv6")
 volume_db = -5.858
 autoplay = true
-stream_paused = true
 parameters/looping = true
 script = ExtResource("2_2g1d4")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1ae2rxtf20ps"]
+[gd_scene load_steps=3 format=3 uid="uid://b1ae2rxtf20ps"]
 
 [ext_resource type="Script" uid="uid://cditgl800fb3p" path="res://scenes/userinterface/pause.gd" id="1_kffl3"]
+[ext_resource type="AudioStream" uid="uid://qwmarbxvhvaf" path="res://sound_effects/montaña fria.mp3" id="2_lro0l"]
 
 [node name="Pause" type="Control"]
 layout_mode = 3
@@ -53,5 +54,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 40
 text = "Salir"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer"]
+stream = ExtResource("2_lro0l")
+parameters/looping = true
 
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer" method="_on_button_pressed"]

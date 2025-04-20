@@ -1,8 +1,10 @@
 extends Node2D
 
 @export var min_time = 0.0
-@export var max_time = 10.0
-@export var count = 10.0
+@export var max_time = 7.0
+@export var count = 7.0
+
+const WATER_DEAD = preload("res://scenes/sound-effects/water_dead.tscn")
 
 var player_nearby = false
 signal player_dead
@@ -21,7 +23,7 @@ func _process(delta: float) -> void:
 			$StaticBody2D/CollisionPolygon2D.disabled = false
 	elif(!player_nearby && count < max_time):
 		count += delta
-	if(count >= max_time-2):
+	if(count >= max_time-1):
 		$Sprite2D.texture = MOUNTAIN_FROZEN
 		$StaticBody2D/CollisionPolygon2D.disabled = false
 	elif(count <= 5):
@@ -30,6 +32,12 @@ func _process(delta: float) -> void:
 		$Sprite2D.texture = MOUNTAIN_SEMI_FROZEN
 		$StaticBody2D/CollisionPolygon2D.disabled = false
 	
+func water_sound():
+	var sound_instance = WATER_DEAD.instantiate()
+	add_child(sound_instance)
+	var audio_player = sound_instance.get_node("AudioStreamPlayer")
+	audio_player.play()
+	audio_player.finished.connect(sound_instance.queue_free)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if(body.name == "player"):
@@ -42,4 +50,5 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
+	WaterDead.play_water_sound()
 	player_dead.emit()

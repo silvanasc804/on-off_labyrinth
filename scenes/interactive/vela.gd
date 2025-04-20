@@ -6,7 +6,9 @@ signal player_use
 var vela_status = 1.0
 var vela_active = true
 
-@export var restore_time = 2
+const TURN_ON = preload("res://scenes/sound-effects/turn_on.tscn")
+
+@export var restore_time = 10
 
 func _process(delta: float) -> void:
 	if not vela_active:
@@ -17,6 +19,12 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if vela_active:
+		var sound_instance = TURN_ON.instantiate()
+		add_child(sound_instance)
+		var audio_player = sound_instance.get_node("AudioStreamPlayer")
+		audio_player.play()
+		audio_player.finished.connect(sound_instance.queue_free)
+		
 		vela_active = false
 		$CollisionShape2D.call_deferred("set_disabled", true)
 		player_use.emit()

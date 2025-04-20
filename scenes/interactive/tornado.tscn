@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dvvja7q3gulmw" path="res://art/interactive/tornado.png" id="1_ehjlj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b670u"]
-radius = 46.0
-height = 136.0
+radius = 76.0
+height = 152.0
 
 [node name="tornado" type="Area2D"]
 collision_layer = 0

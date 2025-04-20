@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2gt67tu3ip8w"]
+
+[ext_resource type="AudioStream" uid="uid://ypkniq3jv2q2" path="res://sound_effects/apagado con agua.mp3" id="1_bnhb7"]
+[ext_resource type="Script" uid="uid://3lgp3360ut4i" path="res://scenes/sound-effects/water_dead.gd" id="1_jom5b"]
+
+[node name="WaterDead" type="Node"]
+script = ExtResource("1_jom5b")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_bnhb7")
+volume_db = -13.698
