@@ -2,7 +2,10 @@ extends Node2D
 
 signal player_fall
 
+var player_alive = true
+
 func change_status(status: bool):
+	$"../camino/CollisionPolygon2D".disabled = true
 	var player = get_node("../player")
 	var position = player.global_position
 	var facing = player.get_node("AnimatedSprite2D").flip_h
@@ -28,13 +31,15 @@ func _on_camino_body_exited(body: Node2D) -> void:
 	if body.name != "player" or $"../camino/CollisionPolygon2D".disabled:
 		$"../camino/CollisionPolygon2D".disabled = false
 		return
+	player_alive = false
 	var sprite = $"../player".get_node("AnimatedSprite2D")
 	var tween = create_tween()
 	tween.tween_property(sprite, "scale", Vector2(0, 0), 1.0)
 	tween.tween_callback(Callable(self, "_restart_scene"))
 
 func _on_final_body_entered(body: Node2D) -> void:
-	get_tree().change_scene_to_file("res://scenes/userinterface/end.tscn")
+	if player_alive:
+		get_tree().change_scene_to_file("res://scenes/userinterface/end.tscn")
 
 func _restart_scene():
 	get_tree().change_scene_to_file("res://scenes/levels/" + str(get_parent().name) + ".tscn")
@@ -58,4 +63,36 @@ func _on_vela_5_player_use() -> void:
 	change_status(true)
 
 func _on_tornado_player_enter() -> void:
+	change_status(false)
+
+
+func _on_area_2d_3_player_dead() -> void:
+	get_tree().call_deferred("change_scene_to_file", "res://scenes/levels/"+str(get_parent().name)+".tscn")
+
+
+func _on_area_2d_2_player_dead() -> void:
+	get_tree().call_deferred("change_scene_to_file", "res://scenes/levels/"+str(get_parent().name)+".tscn")
+
+
+func _on_area_2d_player_dead() -> void:
+	get_tree().call_deferred("change_scene_to_file", "res://scenes/levels/"+str(get_parent().name)+".tscn")
+
+
+func _on_tornado_2_player_enter() -> void:
+	change_status(false)
+
+
+func _on_tornado_3_player_enter() -> void:
+	change_status(false)
+
+
+func _on_tornado_4_player_enter() -> void:
+	change_status(false)
+
+
+func _on_tornado_5_player_enter() -> void:
+	change_status(false)
+
+
+func _on_tornado_6_player_enter() -> void:
 	change_status(false)

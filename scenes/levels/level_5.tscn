@@ -69,27 +69,6 @@ scale = Vector2(-0.6, 0.6)
 position = Vector2(322, 384)
 scale = Vector2(0.6, 0.6)
 
-[node name="final" type="Area2D" parent="."]
-position = Vector2(646, 295)
-scale = Vector2(1.73155, 1.8)
-collision_layer = 0
-collision_mask = 8
-
-[node name="Sprite2D" type="Sprite2D" parent="final"]
-position = Vector2(9.38773e-07, -8.10623e-06)
-scale = Vector2(0.114284, 0.0382955)
-texture = ExtResource("5_mxx4w")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="final"]
-shape = SubResource("CircleShape2D_vvoq0")
-
-[node name="player" parent="." instance=ExtResource("5_fi56y")]
-position = Vector2(588, 295)
-
-[node name="GameController" parent="." instance=ExtResource("6_hldbq")]
-
-[node name="Pause" parent="." instance=ExtResource("7_fsnos")]
-
 [node name="tornado" parent="." instance=ExtResource("9_vvoq0")]
 position = Vector2(698, 43)
 scale = Vector2(0.45, 0.45)
@@ -133,5 +112,37 @@ scale = Vector2(0.4, 0.4)
 speed = 200
 x_variation = 32
 
+[node name="player" parent="." instance=ExtResource("5_fi56y")]
+position = Vector2(34, 542)
+
+[node name="final" type="Area2D" parent="."]
+position = Vector2(646, 295)
+scale = Vector2(1.73155, 1.8)
+collision_layer = 0
+collision_mask = 8
+
+[node name="Sprite2D" type="Sprite2D" parent="final"]
+position = Vector2(9.38773e-07, -8.10623e-06)
+scale = Vector2(0.114284, 0.0382955)
+texture = ExtResource("5_mxx4w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="final"]
+shape = SubResource("CircleShape2D_vvoq0")
+
+[node name="GameController" parent="." instance=ExtResource("6_hldbq")]
+
+[node name="Pause" parent="." instance=ExtResource("7_fsnos")]
+
 [connection signal="body_exited" from="camino" to="GameController" method="_on_camino_body_exited"]
+[connection signal="player_dead" from="Area2D" to="GameController" method="_on_area_2d_player_dead"]
+[connection signal="player_dead" from="Area2D2" to="GameController" method="_on_area_2d_2_player_dead"]
+[connection signal="player_dead" from="Area2D3" to="GameController" method="_on_area_2d_3_player_dead"]
+[connection signal="player_enter" from="tornado" to="GameController" method="_on_tornado_player_enter"]
+[connection signal="player_use" from="vela" to="GameController" method="_on_vela_player_use"]
+[connection signal="player_use" from="vela2" to="GameController" method="_on_vela_2_player_use"]
+[connection signal="player_enter" from="tornado2" to="GameController" method="_on_tornado_2_player_enter"]
+[connection signal="player_enter" from="tornado3" to="GameController" method="_on_tornado_3_player_enter"]
+[connection signal="player_enter" from="tornado4" to="GameController" method="_on_tornado_4_player_enter"]
+[connection signal="player_enter" from="tornado5" to="GameController" method="_on_tornado_5_player_enter"]
+[connection signal="player_enter" from="tornado6" to="GameController" method="_on_tornado_6_player_enter"]
 [connection signal="body_entered" from="final" to="GameController" method="_on_final_body_entered"]

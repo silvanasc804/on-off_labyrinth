@@ -15,6 +15,10 @@ run/main_scene="uid://d03hn4ttutisi"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+BackgroundMusic="*res://scenes/sound-effects/background_music.tscn"
+
 [input]
 
 left={

@@ -23,22 +23,22 @@ func _process(delta: float) -> void:
 		count += delta
 	if(count >= max_time-2):
 		$Sprite2D.texture = MOUNTAIN_FROZEN
+		$StaticBody2D/CollisionPolygon2D.disabled = false
 	elif(count <= 5):
 		$Sprite2D.texture = MOUNTAIN_MELTED_ICE
 	else:
 		$Sprite2D.texture = MOUNTAIN_SEMI_FROZEN
+		$StaticBody2D/CollisionPolygon2D.disabled = false
 	
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if(body.name == "player"):
 		player_nearby = true
-	print(player_nearby)
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if(body.name == "player"):
 		player_nearby = false
-	print(player_nearby)
 
 
 func _on_body_entered(body: Node2D) -> void:

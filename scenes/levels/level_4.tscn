@@ -64,19 +64,12 @@ scale = Vector2(0.7, 0.7)
 position = Vector2(656, 111)
 scale = Vector2(0.7, 0.7)
 
-[node name="Area2D4" parent="." instance=ExtResource("4_ogj6a")]
+[node name="vela2" parent="." instance=ExtResource("4_ogj6a")]
 position = Vector2(1011, 444)
 scale = Vector2(0.5, 0.5)
 
-[node name="GameController" parent="." instance=ExtResource("6_rej77")]
-
 [node name="level_change" parent="." instance=ExtResource("7_5vn0v")]
 position = Vector2(1172, 565)
-
-[node name="player" parent="." instance=ExtResource("8_ts8eg")]
-position = Vector2(43, 523)
-
-[node name="Pause" parent="." instance=ExtResource("9_um320")]
 
 [node name="tornado" parent="." instance=ExtResource("10_glw47")]
 position = Vector2(195, 373)
@@ -110,4 +103,20 @@ y_variation = 180
 position = Vector2(908, 234)
 scale = Vector2(0.5, 0.5)
 
+[node name="player" parent="." instance=ExtResource("8_ts8eg")]
+position = Vector2(43, 523)
+
+[node name="GameController" parent="." instance=ExtResource("6_rej77")]
+
+[node name="Pause" parent="." instance=ExtResource("9_um320")]
+
 [connection signal="body_exited" from="camino" to="GameController" method="_on_camino_body_exited"]
+[connection signal="player_dead" from="Area2D" to="GameController" method="_on_area_2d_player_dead"]
+[connection signal="player_dead" from="Area2D2" to="GameController" method="_on_area_2d_2_player_dead"]
+[connection signal="player_use" from="vela2" to="GameController" method="_on_vela_2_player_use"]
+[connection signal="player_enter" from="tornado" to="GameController" method="_on_tornado_player_enter"]
+[connection signal="player_enter" from="tornado2" to="GameController" method="_on_tornado_2_player_enter"]
+[connection signal="player_enter" from="tornado3" to="GameController" method="_on_tornado_3_player_enter"]
+[connection signal="player_enter" from="tornado4" to="GameController" method="_on_tornado_4_player_enter"]
+[connection signal="player_enter" from="tornado5" to="GameController" method="_on_tornado_5_player_enter"]
+[connection signal="player_use" from="vela" to="GameController" method="_on_vela_player_use"]
