@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1ae2rxtf20ps"]
+
+[ext_resource type="Script" uid="uid://cditgl800fb3p" path="res://scenes/userinterface/pause.gd" id="1_kffl3"]
+
+[node name="Pause" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("1_kffl3")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.164706, 0.164706, 0.164706, 0.435294)
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.415
+anchor_top = 0.292
+anchor_right = 0.598
+anchor_bottom = 0.448
+offset_left = -0.0800171
+offset_top = -0.216019
+offset_right = 0.103943
+offset_bottom = -0.304016
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 73
+text = "Pausa"
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.437
+anchor_top = 0.5
+anchor_right = 0.578
+anchor_bottom = 0.596
+offset_left = 0.575989
+offset_right = 0.143982
+offset_bottom = -0.208008
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Salir"
+
+[connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer" method="_on_button_pressed"]

@@ -1,9 +1,13 @@
-[gd_scene load_steps=8 format=4 uid="uid://cbj7bbm6emvxu"]
+[gd_scene load_steps=12 format=4 uid="uid://cbj7bbm6emvxu"]
 
 [ext_resource type="Texture2D" uid="uid://dptumg4iih6d2" path="res://art/background/bg2.png" id="1_fiq81"]
 [ext_resource type="Texture2D" uid="uid://vvpdypqo4a7v" path="res://art/ground/path1.png" id="1_ra442"]
 [ext_resource type="Texture2D" uid="uid://dqhn67biprcsq" path="res://art/ground/path2.png" id="2_fiq81"]
 [ext_resource type="PackedScene" uid="uid://cgawmsaxesbgn" path="res://scenes/interactive/mountain.tscn" id="3_ra442"]
+[ext_resource type="PackedScene" uid="uid://em5vgs8c5ccr" path="res://scenes/gamecontroller/game_controller.tscn" id="5_l37oo"]
+[ext_resource type="PackedScene" uid="uid://jxi0e4ke5w2n" path="res://scenes/player/player_on.tscn" id="6_qpwj6"]
+[ext_resource type="PackedScene" uid="uid://bgivxtt3pa8o4" path="res://scenes/interactive/level_change.tscn" id="7_ibugp"]
+[ext_resource type="PackedScene" uid="uid://b1ae2rxtf20ps" path="res://scenes/userinterface/pause.tscn" id="8_8qukl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fiq81"]
 texture = ExtResource("1_ra442")
@@ -37,6 +41,13 @@ position = Vector2(575, 325)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_fiq81")
 
+[node name="camino" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="camino"]
+polygon = PackedVector2Array(0, 519, 242, 519, 242, 229, 961, 230, 959, 609, 1149, 613, 1151, 514, 1059, 512, 1056, 132, 529, 129, 529, 36, 429, 34, 429, 129, 242, 130, 241, 34, 144, 33, 142, 417, 0, 417)
+
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 physics_interpolation_mode = 1
 position = Vector2(0, 4)
@@ -46,3 +57,16 @@ tile_set = SubResource("TileSet_8qukl")
 [node name="Area2D" parent="." instance=ExtResource("3_ra442")]
 position = Vector2(717, 99)
 scale = Vector2(0.7, 0.7)
+
+[node name="player" parent="." instance=ExtResource("6_qpwj6")]
+position = Vector2(1042, 511)
+
+[node name="GameController" parent="." instance=ExtResource("5_l37oo")]
+position = Vector2(481.688, 309.729)
+
+[node name="level_change" parent="." instance=ExtResource("7_ibugp")]
+position = Vector2(1169, 565)
+
+[node name="Pause" parent="." instance=ExtResource("8_8qukl")]
+
+[connection signal="body_exited" from="camino" to="GameController" method="_on_camino_body_exited"]

@@ -1,10 +1,14 @@
-[gd_scene load_steps=9 format=4 uid="uid://b2tcdpgvgvpn8"]
+[gd_scene load_steps=13 format=4 uid="uid://b2tcdpgvgvpn8"]
 
 [ext_resource type="Texture2D" uid="uid://cjqmkfa6a5unu" path="res://art/background/bg4.png" id="1_anwe6"]
 [ext_resource type="Texture2D" uid="uid://vvpdypqo4a7v" path="res://art/ground/path1.png" id="1_w6h2s"]
 [ext_resource type="Texture2D" uid="uid://dqhn67biprcsq" path="res://art/ground/path2.png" id="2_ogj6a"]
 [ext_resource type="PackedScene" uid="uid://cgawmsaxesbgn" path="res://scenes/interactive/mountain.tscn" id="3_anwe6"]
 [ext_resource type="PackedScene" uid="uid://b06pcja47s3yq" path="res://scenes/interactive/vela.tscn" id="4_ogj6a"]
+[ext_resource type="PackedScene" uid="uid://em5vgs8c5ccr" path="res://scenes/gamecontroller/game_controller.tscn" id="6_rej77"]
+[ext_resource type="PackedScene" uid="uid://bgivxtt3pa8o4" path="res://scenes/interactive/level_change.tscn" id="7_5vn0v"]
+[ext_resource type="PackedScene" uid="uid://jxi0e4ke5w2n" path="res://scenes/player/player_on.tscn" id="8_ts8eg"]
+[ext_resource type="PackedScene" uid="uid://b1ae2rxtf20ps" path="res://scenes/userinterface/pause.tscn" id="9_um320"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w6h2s"]
 texture = ExtResource("1_w6h2s")
@@ -38,6 +42,13 @@ position = Vector2(575, 325)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_anwe6")
 
+[node name="camino" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="camino"]
+polygon = PackedVector2Array(1, 515, 94, 515, 98, 226, 237, 226, 239, 130, 335, 131, 337, 223, 381, 225, 383, 36, 482, 34, 484, 127, 764, 127, 766, 34, 862, 35, 867, 223, 957, 224, 961, 323, 866, 327, 864, 467, 725, 471, 723, 515, 959, 515, 957, 420, 1058, 422, 1060, 515, 1150, 515, 1150, 611, 621, 613, 625, 373, 764, 367, 765, 231, 677, 228, 674, 325, 573, 325, 576, 231, 485, 231, 480, 325, 197, 326, 195, 371, 286, 370, 287, 470, 196, 472, 194, 613, 1, 615)
+
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 physics_interpolation_mode = 1
 position = Vector2(0, 4)
@@ -58,3 +69,15 @@ scale = Vector2(0.7, 0.7)
 
 [node name="Area2D4" parent="." instance=ExtResource("4_ogj6a")]
 position = Vector2(1014, 392)
+
+[node name="GameController" parent="." instance=ExtResource("6_rej77")]
+
+[node name="level_change" parent="." instance=ExtResource("7_5vn0v")]
+position = Vector2(1172, 565)
+
+[node name="player" parent="." instance=ExtResource("8_ts8eg")]
+position = Vector2(1094, 520)
+
+[node name="Pause" parent="." instance=ExtResource("9_um320")]
+
+[connection signal="body_exited" from="camino" to="GameController" method="_on_camino_body_exited"]

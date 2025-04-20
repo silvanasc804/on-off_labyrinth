@@ -18,3 +18,4 @@ func _physics_process(delta: float) -> void:
 		animated_sprite.flip_h = false
 
 	move_and_slide()
+	

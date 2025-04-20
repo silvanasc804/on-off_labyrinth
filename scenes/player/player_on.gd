@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var speed = 400
 
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var tilemap = get_parent().get_node("TileMapLayer")
 
 func _physics_process(delta: float) -> void:
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d03hn4ttutisi"]
+[gd_scene load_steps=7 format=3 uid="uid://d03hn4ttutisi"]
 
 [ext_resource type="PackedScene" uid="uid://cgawmsaxesbgn" path="res://scenes/interactive/mountain.tscn" id="1_4tcl0"]
 [ext_resource type="PackedScene" uid="uid://bjr6o6qw4xfjy" path="res://scenes/player/player.tscn" id="2_dd0lh"]
@@ -6,10 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bgivxtt3pa8o4" path="res://scenes/interactive/level_change.tscn" id="5_1seuy"]
 [ext_resource type="PackedScene" uid="uid://ylipdnq5w5fs" path="res://scenes/interactive/tornado.tscn" id="5_dywbp"]
 [ext_resource type="PackedScene" uid="uid://em5vgs8c5ccr" path="res://scenes/gamecontroller/game_controller.tscn" id="6_1seuy"]
-
-[sub_resource type="GDScript" id="GDScript_dywbp"]
-script/source = "extends Node2D
-"
 
 [node name="Level1" type="Node2D"]
 position = Vector2(0, 2)

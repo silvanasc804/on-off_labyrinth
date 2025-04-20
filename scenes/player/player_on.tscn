@@ -28,11 +28,14 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b8fx7"]
 radius = 18.0
-height = 194.0
+height = 69.3333
 
 [node name="player" type="CharacterBody2D"]
-collision_layer = 2
+scale = Vector2(0.3, 0.3)
+collision_layer = 10
+collision_mask = 3
 script = ExtResource("1_jm7tu")
+speed = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 light_mask = 2
@@ -42,7 +45,5 @@ animation = &"walk"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-light_mask = 2
-visibility_layer = 2
-position = Vector2(-7, 52)
+position = Vector2(-6.66667, 130)
 shape = SubResource("CapsuleShape2D_b8fx7")
