@@ -38,6 +38,9 @@ func _on_final_body_entered(body: Node2D) -> void:
 
 func _restart_scene():
 	get_tree().change_scene_to_file("res://scenes/levels/" + str(get_parent().name) + ".tscn")
+	
+func _on_node_2d_player_dead() -> void:
+	get_tree().call_deferred("change_scene_to_file", "res://scenes/levels/"+str(get_parent().name)+".tscn")
 
 func _on_vela_player_use() -> void:
 	change_status(true)
