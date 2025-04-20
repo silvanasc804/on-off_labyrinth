@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://b2tcdpgvgvpn8"]
+[gd_scene load_steps=14 format=4 uid="uid://b2tcdpgvgvpn8"]
 
 [ext_resource type="Texture2D" uid="uid://cjqmkfa6a5unu" path="res://art/background/bg4.png" id="1_anwe6"]
 [ext_resource type="Texture2D" uid="uid://vvpdypqo4a7v" path="res://art/ground/path1.png" id="1_w6h2s"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bgivxtt3pa8o4" path="res://scenes/interactive/level_change.tscn" id="7_5vn0v"]
 [ext_resource type="PackedScene" uid="uid://jxi0e4ke5w2n" path="res://scenes/player/player_on.tscn" id="8_ts8eg"]
 [ext_resource type="PackedScene" uid="uid://b1ae2rxtf20ps" path="res://scenes/userinterface/pause.tscn" id="9_um320"]
+[ext_resource type="PackedScene" uid="uid://ylipdnq5w5fs" path="res://scenes/interactive/tornado.tscn" id="10_glw47"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w6h2s"]
 texture = ExtResource("1_w6h2s")
@@ -56,19 +57,16 @@ tile_map_data = PackedByteArray("AAABACEAAQABAAAAAAAEACEAAQABAAAAAAABACQAAQABAAI
 tile_set = SubResource("TileSet_ts8eg")
 
 [node name="Area2D" parent="." instance=ExtResource("3_anwe6")]
-position = Vector2(594, 444)
+position = Vector2(604, 421)
 scale = Vector2(0.7, 0.7)
 
 [node name="Area2D2" parent="." instance=ExtResource("3_anwe6")]
-position = Vector2(669, 98)
-scale = Vector2(0.7, 0.7)
-
-[node name="Area2D3" parent="." instance=ExtResource("4_ogj6a")]
-position = Vector2(911, 198)
+position = Vector2(656, 111)
 scale = Vector2(0.7, 0.7)
 
 [node name="Area2D4" parent="." instance=ExtResource("4_ogj6a")]
-position = Vector2(1014, 392)
+position = Vector2(1011, 444)
+scale = Vector2(0.5, 0.5)
 
 [node name="GameController" parent="." instance=ExtResource("6_rej77")]
 
@@ -76,8 +74,40 @@ position = Vector2(1014, 392)
 position = Vector2(1172, 565)
 
 [node name="player" parent="." instance=ExtResource("8_ts8eg")]
-position = Vector2(1094, 520)
+position = Vector2(43, 523)
 
 [node name="Pause" parent="." instance=ExtResource("9_um320")]
+
+[node name="tornado" parent="." instance=ExtResource("10_glw47")]
+position = Vector2(195, 373)
+scale = Vector2(0.6, 0.6)
+speed = 200
+x_variation = 44
+
+[node name="tornado2" parent="." instance=ExtResource("10_glw47")]
+position = Vector2(294, 197)
+scale = Vector2(0.6, 0.6)
+speed = 200
+y_variation = 36
+
+[node name="tornado3" parent="." instance=ExtResource("10_glw47")]
+position = Vector2(435, 148)
+scale = Vector2(0.6, 0.6)
+speed = 200
+y_variation = 90
+
+[node name="tornado4" parent="." instance=ExtResource("10_glw47")]
+position = Vector2(622, 254)
+scale = Vector2(0.5, 0.5)
+
+[node name="tornado5" parent="." instance=ExtResource("10_glw47")]
+position = Vector2(821, 225)
+scale = Vector2(0.5, 0.5)
+speed = 200
+y_variation = 180
+
+[node name="vela" parent="." instance=ExtResource("4_ogj6a")]
+position = Vector2(908, 234)
+scale = Vector2(0.5, 0.5)
 
 [connection signal="body_exited" from="camino" to="GameController" method="_on_camino_body_exited"]

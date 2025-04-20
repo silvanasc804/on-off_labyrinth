@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://cbj7bbm6emvxu"]
+[gd_scene load_steps=13 format=4 uid="uid://cbj7bbm6emvxu"]
 
 [ext_resource type="Texture2D" uid="uid://dptumg4iih6d2" path="res://art/background/bg2.png" id="1_fiq81"]
 [ext_resource type="Texture2D" uid="uid://vvpdypqo4a7v" path="res://art/ground/path1.png" id="1_ra442"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://jxi0e4ke5w2n" path="res://scenes/player/player_on.tscn" id="6_qpwj6"]
 [ext_resource type="PackedScene" uid="uid://bgivxtt3pa8o4" path="res://scenes/interactive/level_change.tscn" id="7_ibugp"]
 [ext_resource type="PackedScene" uid="uid://b1ae2rxtf20ps" path="res://scenes/userinterface/pause.tscn" id="8_8qukl"]
+[ext_resource type="PackedScene" uid="uid://ylipdnq5w5fs" path="res://scenes/interactive/tornado.tscn" id="9_3p04p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fiq81"]
 texture = ExtResource("1_ra442")
@@ -55,11 +56,11 @@ tile_map_data = PackedByteArray("AAABAB4AAQABAAIAAAAEAB4AAQABAAIAAAAHAB4AAQABAAI
 tile_set = SubResource("TileSet_8qukl")
 
 [node name="Area2D" parent="." instance=ExtResource("3_ra442")]
-position = Vector2(717, 99)
+position = Vector2(688, 117)
 scale = Vector2(0.7, 0.7)
 
 [node name="player" parent="." instance=ExtResource("6_qpwj6")]
-position = Vector2(1042, 511)
+position = Vector2(42, 421)
 
 [node name="GameController" parent="." instance=ExtResource("5_l37oo")]
 position = Vector2(481.688, 309.729)
@@ -68,5 +69,17 @@ position = Vector2(481.688, 309.729)
 position = Vector2(1169, 565)
 
 [node name="Pause" parent="." instance=ExtResource("8_8qukl")]
+
+[node name="tornado" parent="." instance=ExtResource("9_3p04p")]
+position = Vector2(195, 235)
+scale = Vector2(0.7, 0.7)
+speed = 190
+y_variation = 220
+
+[node name="tornado2" parent="." instance=ExtResource("9_3p04p")]
+position = Vector2(480, 96)
+scale = Vector2(0.7, 0.7)
+speed = 200
+y_variation = 55
 
 [connection signal="body_exited" from="camino" to="GameController" method="_on_camino_body_exited"]
