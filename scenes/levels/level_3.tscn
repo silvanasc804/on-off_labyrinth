@@ -65,19 +65,12 @@ scale = Vector2(0.7, -0.7)
 position = Vector2(620, 170)
 scale = Vector2(0.7, 0.7)
 
-[node name="Area2D3" parent="." instance=ExtResource("4_fkk1g")]
+[node name="vela2" parent="." instance=ExtResource("4_fkk1g")]
 position = Vector2(507, 525)
 scale = Vector2(0.5, 0.5)
 
-[node name="player" parent="." instance=ExtResource("7_fkk1g")]
-position = Vector2(37, 529)
-
-[node name="GameController" parent="." instance=ExtResource("6_ftfob")]
-
 [node name="level_change" parent="." instance=ExtResource("8_ugcn1")]
 position = Vector2(1173, 561)
-
-[node name="Pause" parent="." instance=ExtResource("9_pimnq")]
 
 [node name="tornado" parent="." instance=ExtResource("10_2bnyt")]
 position = Vector2(141, 317)
@@ -95,4 +88,17 @@ x_variation = 55
 position = Vector2(1007, 450)
 scale = Vector2(0.5, 0.5)
 
+[node name="GameController" parent="." instance=ExtResource("6_ftfob")]
+
+[node name="player" parent="." instance=ExtResource("7_fkk1g")]
+position = Vector2(37, 529)
+
+[node name="Pause" parent="." instance=ExtResource("9_pimnq")]
+
 [connection signal="body_exited" from="camino" to="GameController" method="_on_camino_body_exited"]
+[connection signal="player_dead" from="Area2D" to="GameController" method="_on_area_2d_player_dead"]
+[connection signal="player_dead" from="Area2D2" to="GameController" method="_on_area_2d_2_player_dead"]
+[connection signal="player_use" from="vela2" to="GameController" method="_on_vela_2_player_use"]
+[connection signal="player_enter" from="tornado" to="GameController" method="_on_tornado_player_enter"]
+[connection signal="player_enter" from="tornado2" to="GameController" method="_on_tornado_2_player_enter"]
+[connection signal="player_use" from="vela" to="GameController" method="_on_vela_player_use"]

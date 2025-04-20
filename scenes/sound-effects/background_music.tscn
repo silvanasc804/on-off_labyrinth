@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://j0rfoakeio6t"]
+
+[ext_resource type="AudioStream" uid="uid://bh5c8hkxl802w" path="res://music/background.mp3" id="1_7clv6"]
+[ext_resource type="Script" uid="uid://ckoq53j21t8wx" path="res://scenes/sound-effects/audio_stream_player.gd" id="2_2g1d4"]
+
+[node name="BackgroundMusic" type="Node"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_7clv6")
+volume_db = -5.858
+autoplay = true
+stream_paused = true
+parameters/looping = true
+script = ExtResource("2_2g1d4")

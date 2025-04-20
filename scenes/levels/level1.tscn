@@ -16,7 +16,7 @@ position = Vector2(0, 2)
 position = Vector2(330, 149)
 
 [node name="player" parent="." instance=ExtResource("2_dd0lh")]
-position = Vector2(388, 527)
+position = Vector2(363, 473)
 
 [node name="tornado" parent="." instance=ExtResource("5_dywbp")]
 position = Vector2(759, 481)
@@ -35,6 +35,13 @@ position = Vector2(266, 501)
 position = Vector2(1036, 449)
 
 [node name="GameController" parent="." instance=ExtResource("6_1seuy")]
+
+[node name="camino" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="camino"]
+polygon = PackedVector2Array(-1, 563, 483, 563, 482, 460, 292, 460, 294, 329, 378, 326, 376, 359, 391, 369, 402, 372, 858, 373, 863, 380, 858, 495, 868, 508, 888, 516, 1152, 516, 1152, 414, 968, 412, 964, 278, 958, 270, 919, 267, 914, 178, 677, 170, 675, 81, 663, 74, 575, 73, 574, 169, 351, 171, 338, 179, 331, 219, 192, 221, 189, 462, 1, 460)
 
 [connection signal="player_dead" from="Node2D" to="GameController" method="_on_node_2d_player_dead"]
 [connection signal="body_entered" from="tornado" to="." method="_on_tornado_body_entered"]
