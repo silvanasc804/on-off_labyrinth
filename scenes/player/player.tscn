@@ -32,7 +32,7 @@ height = 73.3333
 
 [node name="player" type="CharacterBody2D"]
 scale = Vector2(0.3, 0.3)
-collision_layer = 9
+collision_layer = 25
 collision_mask = 17
 script = ExtResource("1_gmlin")
 speed = 100

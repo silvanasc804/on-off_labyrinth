@@ -5,6 +5,7 @@ extends Node2D
 @export var count = 10.0
 
 var player_nearby = false
+signal player_dead
 
 const MOUNTAIN_FROZEN = preload("res://art/interactive/mountain_frozen.png")
 const MOUNTAIN_SEMI_FROZEN = preload("res://art/interactive/mountain_semi_frozen.png")
@@ -41,6 +42,4 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if(body.name != "player"):
-		return
-	print("If player is ON then DEAD")
+	player_dead.emit()

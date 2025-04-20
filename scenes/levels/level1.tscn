@@ -16,7 +16,7 @@ position = Vector2(0, 2)
 position = Vector2(330, 149)
 
 [node name="player" parent="." instance=ExtResource("2_dd0lh")]
-position = Vector2(309, 445)
+position = Vector2(388, 527)
 
 [node name="tornado" parent="." instance=ExtResource("5_dywbp")]
 position = Vector2(759, 481)
@@ -29,13 +29,14 @@ position = Vector2(1077, 84)
 [node name="Node2D2" type="Node2D" parent="."]
 
 [node name="vela" parent="Node2D2" instance=ExtResource("3_dd0lh")]
-position = Vector2(763, 149)
+position = Vector2(266, 501)
 
 [node name="vela2" parent="Node2D2" instance=ExtResource("3_dd0lh")]
 position = Vector2(1036, 449)
 
 [node name="GameController" parent="." instance=ExtResource("6_1seuy")]
 
+[connection signal="player_dead" from="Node2D" to="GameController" method="_on_node_2d_player_dead"]
 [connection signal="body_entered" from="tornado" to="." method="_on_tornado_body_entered"]
 [connection signal="player_enter" from="tornado" to="GameController" method="_on_tornado_player_enter"]
 [connection signal="child_entered_tree" from="Node2D2" to="." method="_on_node_2d_2_child_entered_tree"]

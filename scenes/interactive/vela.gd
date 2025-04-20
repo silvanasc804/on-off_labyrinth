@@ -6,14 +6,26 @@ signal player_use
 var vela_status = 1.0
 var vela_active = true
 
+@export var restore_time = 2
+
 func _process(delta: float) -> void:
-	if(!vela_active):
+	if not vela_active:
 		vela_status -= delta
 	$Sprite2D.modulate.a = vela_status
-	if(vela_status <= 0):
-		pass
+	if vela_active and vela_status < 1.0:
+		vela_status += delta
 
 func _on_body_entered(body: Node2D) -> void:
-	vela_active = false
-	$CollisionShape2D.call_deferred("set_disabled", true)
-	player_use.emit()
+	if vela_active:
+		vela_active = false
+		$CollisionShape2D.call_deferred("set_disabled", true)
+		player_use.emit()
+		restore_later()
+
+func restore_later() -> void:
+	await get_tree().create_timer(restore_time).timeout
+	_restore_vela()
+
+func _restore_vela():
+	vela_active = true
+	$CollisionShape2D.call_deferred("set_disabled", false)
